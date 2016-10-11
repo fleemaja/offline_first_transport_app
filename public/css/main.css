@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+    font-family: 'Helvetica', sans-serif;
+}
+
+h1 {
+    margin: 40px 0px;
+    font-weight: 900;
+}
+
+label {
+    text-align: left;
+    margin: 10px;
+}
+
+.form-control {
+    width: 300px;
+}
