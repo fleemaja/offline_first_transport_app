@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "stop_name": "22nd St Caltrain"
+  },
+  {
+    "id": 2,
+    "stop_name": "Atherton Caltrain"
+  },
+  {
+    "id": 3,
+    "stop_name": "Bayshore Caltrain"
+  },
+  {
+    "id": 4,
+    "stop_name": "Belmont Caltrain"
+  },
+  {
+    "id": 5,
+    "stop_name": "Blossom Hill Caltrain"
+  },
+  {
+    "id": 6,
+    "stop_name": "Broadway Caltrain"
+  },
+  {
+    "id": 7,
+    "stop_name": "Broadway Caltrain"
+  },
+  {
+    "id": 8,
+    "stop_name": "Burlingame Caltrain"
+  },
+  {
+    "id": 9,
+    "stop_name": "California Ave Caltrain"
+  },
+  {
+    "id": 10,
+    "stop_name": "Capitol Caltrain"
+  },
+  {
+    "id": 11,
+    "stop_name": "College Park Caltrain"
+  },
+  {
+    "id": 12,
+    "stop_name": "Gilroy Caltrain"
+  },
+  {
+    "id": 13,
+    "stop_name": "Hayward Park Caltrain"
+  },
+  {
+    "id": 14,
+    "stop_name": "Hillsdale Caltrain"
+  },
+  {
+    "id": 15,
+    "stop_name": "Lawrence Caltrain"
+  },
+  {
+    "id": 16,
+    "stop_name": "Menlo Park Caltrain"
+  },
+  {
+    "id": 17,
+    "stop_name": "Millbrae Caltrain"
+  },
+  {
+    "id": 18,
+    "stop_name": "Morgan Hill Caltrain"
+  },
+  {
+    "id": 19,
+    "stop_name": "Mt View Caltrain"
+  },
+  {
+    "id": 20,
+    "stop_name": "Palo Alto Caltrain"
+  },
+  {
+    "id": 21,
+    "stop_name": "Redwood City Caltrain"
+  },
+  {
+    "id": 22,
+    "stop_name": "San Antonio Caltrain"
+  },
+  {
+    "id": 23,
+    "stop_name": "San Bruno Caltrain"
+  },
+  {
+    "id": 24,
+    "stop_name": "San Carlos Caltrain"
+  },
+  {
+    "id": 25,
+    "stop_name": "San Francisco Caltrain"
+  },
+  {
+    "id": 26,
+    "stop_name": "San Jose Caltrain Station"
+  },
+  {
+    "id": 27,
+    "stop_name": "San Jose Diridon Caltrain"
+  },
+  {
+    "id": 28,
+    "stop_name": "San Martin Caltrain"
+  },
+  {
+    "id": 29,
+    "stop_name": "San Mateo Caltrain"
+  },
+  {
+    "id": 30,
+    "stop_name": "Santa Clara Caltrain"
+  },
+  {
+    "id": 31,
+    "stop_name": "So. San Francisco Caltrain Station"
+  },
+  {
+    "id": 32,
+    "stop_name": "Sunnyvale Caltrain"
+  },
+  {
+    "id": 33,
+    "stop_name": "Tamien Caltrain"
+  },
+  {
+    "id": 34,
+    "stop_name": "Tamien Caltrain Station"
+  }
+]

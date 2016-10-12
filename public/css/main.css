@@ -1,18 +1,21 @@
 .container {
-    text-align: center;
     font-family: 'Helvetica', sans-serif;
+    margin: 20px;
+    padding: 0;
 }
 
 h1 {
-    margin: 40px 0px;
+    margin: 10px 0px;
     font-weight: 900;
 }
 
-label {
-    text-align: left;
-    margin: 10px;
+.form-control {
+    width: 280px;
 }
 
-.form-control {
-    width: 300px;
+.dropdown-toggle {
+    font-size: 18px;
+    margin-top: 10px;
+    background: #A99 !important;
+    border: none;
 }
