@@ -14,20 +14,25 @@
             <h1><i class="fa fa-subway"></i> <span style="color: #fd5c63;">Cal</span>train</h1>
             
             <div>
-                <label for="departure-input">
+                <label for="departure-station">
                   <span>Start</span>
-                  <input type="text" id="departure-input" class="form-control" name="departure" placeholder="Departure Station">
+                  <select id="departure-station" class="form-control" name="departure" aria-label="Departure Station">
+                      <option disabled selected value> -- select a departure station -- </option>
+                  </select>
                 </label>
             </div>
             
             <div>
-                <label for="arrival-input">
+                <label for="arrival-station">
                   <span>End</span>
-                  <input type="text" id="arrival-input" class="form-control" name="arrival" placeholder="Arrival Station">
+                  <select id="arrival-station" class="form-control" name="arrival" aria-label="Arrival Station">
+                      <option disabled selected value> -- select an arrival station -- </option>
+                  </select>
                 </label>
             </div>
         </div>
         
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="/public/javascript/index.js"></script>
     </body>
 </html>
