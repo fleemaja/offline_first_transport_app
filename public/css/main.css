@@ -19,3 +19,16 @@ h1 {
     background: #A99 !important;
     border: none;
 }
+
+#stops {
+    margin: 20px 0px 20px 12px;
+}
+
+.stop-sign {
+    background: #fd5c63;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 25px;
+}
