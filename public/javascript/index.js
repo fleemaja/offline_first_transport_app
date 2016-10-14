@@ -47,7 +47,7 @@ arrivalDropdown.change(function() {
     });
 });
 
-// function to update DOM with intermediary stops between selected stations
+// function to update DOM with display of intermediary stops between selected stations
 function getStops() {
     var departure = departureDropdown.val();
     var arrival = arrivalDropdown.val();
