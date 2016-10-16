@@ -10,29 +10,46 @@
     </head>
     
     <body>
+        <h1><i class="fa fa-subway"></i> <span style="color: #fd5c63;">Cal</span>train</h1>
         <div class="container">
-            <h1><i class="fa fa-subway"></i> <span style="color: #fd5c63;">Cal</span>train</h1>
-            
-            <div>
-                <label for="departure-station">
-                  <span>Start</span>
-                  <select id="departure-station" class="form-control" name="departure" aria-label="Departure Station">
-                      <option disabled selected value> -- select a departure station -- </option>
-                  </select>
-                </label>
-            </div>
-            
-            <div id="stops">
+            <div class="col-md-4 col-md-offset-2">
                 
+                <div>
+                    <label for="departure-station">
+                      <span>Start</span>
+                      <select id="departure-station" class="form-control" name="departure" aria-label="Departure Station">
+                          <option disabled selected value> -- select a departure station -- </option>
+                      </select>
+                    </label>
+                </div>
+                
+                <div id="stops">
+                </div>
+                
+                <div>
+                    <label for="arrival-station">
+                      <span>End</span>
+                      <select id="arrival-station" class="form-control" name="arrival" aria-label="Arrival Station">
+                          <option disabled selected value> -- select an arrival station -- </option>
+                      </select>
+                    </label>
+                </div>
             </div>
-            
-            <div>
-                <label for="arrival-station">
-                  <span>End</span>
-                  <select id="arrival-station" class="form-control" name="arrival" aria-label="Arrival Station">
-                      <option disabled selected value> -- select an arrival station -- </option>
-                  </select>
-                </label>
+        
+            <div class="col-md-4 table-col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Departure</th>
+                    <th>Day</th>
+                    <th>Arrival</th>
+                  </tr>
+                </thead>
+                
+                <tbody id="time-table">
+                </tbody>
+                
+              </table>
             </div>
         </div>
         
