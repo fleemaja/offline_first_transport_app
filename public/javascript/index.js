@@ -17,7 +17,20 @@ $(document).ready(function() {
                 stops.push(stop.stop_name);
             });
         }
-    })
+    });
+
+    // auto select the day tab based on current day
+    // new Date().getDay() will return 0 for Sunday, 1 for Monday, and so on...
+    switch (new Date().getDay()) {
+        case 0:
+            $('#sunday').addClass("active");
+            break;
+        case 6:
+            $('#saturday').addClass("active");
+            break;
+        default:
+            $('#weekday').addClass("active");
+    }
 });
 
 departureDropdown.change(function() {
@@ -25,7 +38,7 @@ departureDropdown.change(function() {
     // update DOM with the stops in between start and end destination
     getStops();
     // update DOM with time table
-    getTimes()
+    getTimes();
     // disable arrival option already selected as departure station
     arrivalDropdown.children( "option" ).each(function () {
         if (this.text === departure) {
@@ -41,7 +54,7 @@ arrivalDropdown.change(function() {
     // update DOM with the stops in between start and end destination
     getStops();
     // update DOM with time table
-    getTimes()
+    getTimes();
     // disable departure option already selected as arrival station
     departureDropdown.children( "option" ).each(function () {
         if (this.text === arrival) {
@@ -62,6 +75,8 @@ function getStops() {
     var indexOfArrival = stops.indexOf(arrival);
     
     if (indexOfArrival > -1 && indexOfDeparture > -1) {
+        var direction = indexOfArrival > indexOfDeparture ? "Southbound" : "Northbound";
+        $('#service-direction').html("<h2>" + direction + " Service</h2>");
         if (indexOfDeparture < indexOfArrival) {
             for (var i = indexOfDeparture + 1; i < indexOfArrival; i++) {
                 $('#stops').append('<p><span class="stop-sign"><i class="fa fa-arrow-down"></i></span>' + stops[i] + '</p>');
@@ -74,9 +89,17 @@ function getStops() {
     }
 }
 
+$('.nav-tabs li').click(function() {
+    $('.nav-tabs li').removeClass("active");
+    $(this).addClass("active");
+    getTimes();
+});
+
 function getTimes() {
     var departure = departureDropdown.val();
     var arrival = arrivalDropdown.val();
+    
+    var dayType = $('.nav-tabs .active').text();
     
     var indexOfDeparture = stops.indexOf(departure);
     var indexOfArrival = stops.indexOf(arrival);
@@ -96,13 +119,15 @@ function getTimes() {
                     for (var j = 0; j < arrivalTrips.length; j++) {
                         if (departureTrips[i].trip_id.toString() === arrivalTrips[j].trip_id.toString()) {
                             if (departureTrips[i].stop_sequence < arrivalTrips[j].stop_sequence) {
-                                html = "";
-                                html += '<tr>';
-                                html += '<td>' + departureTrips[i].stop_time + '</td>';
-                                html += '<td>' + departureTrips[i].trip_day + '</td>';
-                                html += '<td>' + arrivalTrips[j].stop_time + '</td>';
-                                html += '</tr>'
-                                $('#time-table').append(html);
+                                if (departureTrips[i].trip_day === dayType) {
+                                    html = "";
+                                    html += '<tr>';
+                                    html += '<td>' + departureTrips[i].stop_time + '</td>';
+                                    html += '<td>' + departureTrips[i].trip_day + '</td>';
+                                    html += '<td>' + arrivalTrips[j].stop_time + '</td>';
+                                    html += '</tr>'
+                                    $('#time-table').append(html);
+                                }
                             }
                         }
                     }

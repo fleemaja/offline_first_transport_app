@@ -34,8 +34,10 @@ h1 {
     margin-bottom: 25px;
 }
 
-@media (max-width: 991px) {
-    .table-col {
-        margin-top: 60px;
-    }
+.trip-select {
+    margin-bottom: 60px;
+}
+
+.nav-tabs {
+    margin-bottom: 20px;
 }
