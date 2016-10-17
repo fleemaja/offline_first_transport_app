@@ -7,8 +7,8 @@ var stops = [];
 // populate departure and arrival dropdowns with caltrain stop names
 $(document).ready(function() {
     $.ajax({
-        type : 'GET',
-        dataType : 'json',
+        type: 'GET',
+        dataType: 'json',
         url: '/stop_list',
         success: function(json) {
             json.forEach(function(stop) {
@@ -107,8 +107,8 @@ function getTimes() {
     if (indexOfArrival > -1 && indexOfDeparture > -1) {
     
         $.ajax({
-            type : 'GET',
-            dataType : 'json',
+            type: 'GET',
+            dataType: 'json',
             url: '/stop_trips',
             success: function(json) {
                 $('#time-table').html("");
@@ -122,9 +122,9 @@ function getTimes() {
                                 if (departureTrips[i].trip_day === dayType) {
                                     html = "";
                                     html += '<tr>';
-                                    html += '<td>' + departureTrips[i].stop_time + '</td>';
-                                    html += '<td>' + departureTrips[i].trip_day + '</td>';
-                                    html += '<td>' + arrivalTrips[j].stop_time + '</td>';
+                                    html += '<td>' + getFormattedTime(departureTrips[i].stop_time) + '</td>';
+                                    html += '<td><i class="fa fa-clock-o" aria-hidden="true"></i></td>';
+                                    html += '<td>' + getFormattedTime(arrivalTrips[j].stop_time) + '</td>';
                                     html += '</tr>'
                                     $('#time-table').append(html);
                                 }
@@ -136,3 +136,15 @@ function getTimes() {
         })
     }
 }
+
+function getFormattedTime(timeStr) {
+    // example timeStr = "5:23:00"
+    var timeComponents = timeStr.split(":");
+    /* make sure add radix*/
+    var hours24 = parseInt(timeComponents[0], 10);
+    var hours = ((hours24 + 11) % 12) + 1;
+    var amPm = hours24 > 11 ? 'pm' : 'am';
+    var minutes = timeComponents[1];
+
+    return hours + ':' + minutes + " " + amPm;
+};
