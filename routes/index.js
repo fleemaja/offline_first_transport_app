@@ -8,7 +8,7 @@ var stopTrips = require("../caltrain_data/stop_trips.json");
 module.exports = function (app) {
     app.route('/')
         .get(function(req, res) {
-        	  res.status(200).render(path + '/public/html/index.ejs');
+        	  res.status(200).sendFile(path + '/public/html/index.html');
         });
         
     app.route('/stop_list')

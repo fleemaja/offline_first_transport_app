@@ -4,12 +4,27 @@ var arrivalDropdown = $('#arrival-station');
 // global variable for stop names (populated with ajax json response)
 var stops = [];
 
+// check if browser supports service workers and register this app's SW file if so
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceWorker.js', { scope: '/' }).then(function(registration) {
+        if (registration.installing) {
+          console.log('Service worker installing');
+        } else if (registration.waiting) {
+          console.log('Service worker waiting');
+        } else if (registration.active) {
+          console.log('Service worker active');
+        }
+    }).catch(function(error) {
+      console.log('Service worker registration failed: ' + error);
+    });
+};
+
 // populate departure and arrival dropdowns with caltrain stop names
 $(document).ready(function() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
-        url: '/stop_list',
+        url: 'https://fleemaja.github.io/data/stop_list.json',
         success: function(json) {
             json.forEach(function(stop) {
                 departureDropdown.append('<option>' + stop.stop_name + '</option>');
@@ -109,7 +124,7 @@ function getTimes() {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: '/stop_trips',
+            url: 'https://fleemaja.github.io/data/stop_trips.json',
             success: function(json) {
                 $('#time-table').html("");
                 var departureTrips = json[departure];

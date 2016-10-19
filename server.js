@@ -3,9 +3,9 @@ var https = require('https');
 var express = require('express');
 var routes = require('./routes/index.js');
 
-var app = express();
+require('es6-promise').polyfill();
 
-app.set('view engine', 'ejs');
+var app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
