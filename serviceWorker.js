@@ -1,6 +1,6 @@
 importScripts('serviceworker-cache-polyfill.js');
 
-var staticCacheName = 'caltrain-v3';
+var staticCacheName = 'caltrain-v0.07';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -26,7 +26,7 @@ self.addEventListener('activate', function(event) {
       return Promise.all(
         cacheNames.filter(function(cacheName) {
           return cacheName.startsWith('caltrain-') &&
-                 cacheName != staticCacheName;
+                cacheName != staticCacheName;
         }).map(function(cacheName) {
           return caches.delete(cacheName);
         })

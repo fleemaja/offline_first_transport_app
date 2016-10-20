@@ -1,5 +1,9 @@
 $red: #fd5c63;
 
+a:hover {
+    cursor:pointer;
+}
+
 h1 {
     text-align: center;
     margin: 30px 0px;
@@ -23,7 +27,7 @@ h1 {
         margin-bottom: 60px;
     }
     
-    .nav-tabs {
+    #nav-tabs {
         margin-bottom: 20px;
     }
     
