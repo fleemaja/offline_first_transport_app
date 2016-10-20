@@ -1,13 +1,13 @@
 importScripts('serviceworker-cache-polyfill.js');
 
-var staticCacheName = 'caltrain-v0.07';
+var staticCacheName = 'caltrain-v0.14';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
         '/',
-        '/public/html/index.html',
+        '/index.html',
         '/public/js/index.js',
         '/public/css/main.css',
         'https://fleemaja.github.io/data/stop_list.json',
@@ -36,7 +36,6 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  // TODO: respond to requests for the root page
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
