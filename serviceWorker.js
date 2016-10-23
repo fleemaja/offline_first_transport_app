@@ -1,6 +1,6 @@
 importScripts('serviceworker-cache-polyfill.js');
 
-var staticCacheName = 'caltrain-v0.14';
+var staticCacheName = 'caltrain-v0.23';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(

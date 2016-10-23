@@ -31,6 +31,8 @@ $(document).ready(function() {
                 arrivalDropdown.append('<option>' + stop.stop_name + '</option>');
                 stops.push(stop.stop_name);
             });
+            
+            selectOptions();
         }
     });
 
@@ -48,7 +50,18 @@ $(document).ready(function() {
     }
 });
 
+function selectOptions() {
+    $('#departure-station option:nth-of-type(1)').prop("selected", true);
+    departureSelect();
+    $('#arrival-station option:nth-of-type(2)').prop("selected", true);
+    arrivalSelect();
+}
+
 departureDropdown.change(function() {
+    departureSelect();
+});
+
+function departureSelect() {
     var departure = departureDropdown.val();
     // update DOM with the stops in between start and end destination
     getStops();
@@ -62,9 +75,13 @@ departureDropdown.change(function() {
             $(this).removeAttr('disabled');
         }
     });
-});
+}
 
 arrivalDropdown.change(function() {
+    arrivalSelect();
+});
+
+function arrivalSelect() {
     var arrival = arrivalDropdown.val();
     // update DOM with the stops in between start and end destination
     getStops();
@@ -78,7 +95,7 @@ arrivalDropdown.change(function() {
             $(this).removeAttr('disabled');
         }
     });
-});
+}
 
 // function to update DOM with display of intermediary stops between selected stations
 function getStops() {
@@ -138,7 +155,8 @@ function getTimes() {
                                     html = "";
                                     html += '<tr>';
                                     html += '<td>' + getFormattedTime(departureTrips[i].stop_time) + '</td>';
-                                    html += '<td><i class="fa fa-clock-o" aria-hidden="true"></i></td>';
+                                    html += '<td><i class="fa fa-clock-o" aria-hidden="true"></i> ';
+                                    html += getMinutesBetween(departureTrips[i].stop_time, arrivalTrips[j].stop_time) + ' minutes</td>';
                                     html += '<td>' + getFormattedTime(arrivalTrips[j].stop_time) + '</td>';
                                     html += '</tr>'
                                     $('#time-table').append(html);
@@ -158,8 +176,30 @@ function getFormattedTime(timeStr) {
     /* make sure add radix*/
     var hours24 = parseInt(timeComponents[0], 10);
     var hours = ((hours24 + 11) % 12) + 1;
-    var amPm = hours24 > 11 ? 'pm' : 'am';
+    var amPm = hours24 != 24 && hours24 > 11 ? 'pm' : 'am';
     var minutes = timeComponents[1];
 
     return hours + ':' + minutes + " " + amPm;
 };
+
+function getMinutesBetween(departureTime, arrivalTime) {
+    // example departureTime/arrivalTime = "5:23:00"
+    var departureComponents = departureTime.split(":");
+    var arrivalComponents = arrivalTime.split(":");
+    
+    var departureHour = parseInt(departureComponents[0]);
+    var arrivalHour = parseInt(arrivalComponents[0]);
+    
+    var nextDay = arrivalHour < departureHour ? true : false;
+    
+    var departureDate = new Date(); var arrivalDate = new Date();
+    departureDate.setHours(departureHour);
+    arrivalDate.setHours(arrivalHour);
+    departureDate.setMinutes(departureComponents[1]);
+    arrivalDate.setMinutes(arrivalComponents[1]);
+    if (nextDay) {
+        arrivalDate.setDate(parseInt(arrivalDate.getDate()) + 1)
+    }
+    
+    return ((arrivalDate - departureDate)/1000)/60;
+}
